@@ -28,6 +28,13 @@ class Post(PostBase): # Response Model
     class Config: # Pydantic's orm_mode will tell the Pydantic model to read data even if it is not a dict, but an ORM model(or any other arbitary object with attirubutes)
         orm_mode = True
 
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
+
+    class Config:
+        orm_mode= True
+
 class UserCreate(BaseModel): # Request Model
     email: EmailStr
     password: str
